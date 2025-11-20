@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.proyec</groupId>
-	<artifactId>crud</artifactId>
+	<artifactId>Crud_Project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>crud</name>
 	<description>Demo project for Spring Boot</description>
