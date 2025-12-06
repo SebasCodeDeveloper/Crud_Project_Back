@@ -13,6 +13,10 @@ import org.hibernate.type.SqlTypes;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * Entidad que representa la tabla "users" en la base de datos.
+ * Contiene la información principal de un usuario.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,6 +24,10 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
 
+    /**
+     * Identificador único del usuario (UUID).
+     * Se genera automáticamente.
+     */
     @Id
     @JdbcTypeCode(SqlTypes.CHAR)
     @GeneratedValue
@@ -27,14 +35,15 @@ public class User {
 
     /**
      * Nombre del usuario.
+     * No puede estar vacío y tiene un máximo de 50 caracteres.
      */
     @NotBlank(message = "El nombre es obligatorio")
     @Size(max = 50)
     private String name;
 
     /**
-     * Correo electronico del usuario
-     * Debe ser unico y valido
+     * Correo electrónico del usuario.
+     * Debe ser único y tener un formato válido.
      */
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El email debe ser válido")
@@ -50,19 +59,27 @@ public class User {
     private String password;
 
     /**
-     *Indica si el correo electroníco del usuario ha sido verificado.
+     * Indica si el usuario ya verificó su dirección de correo electrónico.
+     * Por defecto se encuentra en false.
      */
     @Column(name = "email_verified")
     private boolean emailVerified = false;
 
-
+    /**
+     * Fecha de creación del registro.
+     * Se asigna automáticamente antes de insertar el usuario.
+     */
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
+    /**
+     * Callback que se ejecuta antes de persistir el usuario.
+     * Asigna la fecha/hora actual al campo "fechaCreacion".
+     */
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         LocalDateTime now = LocalDateTime.now();
         this.fechaCreacion = now;
-     }
+    }
 
 }

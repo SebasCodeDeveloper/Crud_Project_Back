@@ -1,3 +1,6 @@
+// ► Repositorio de usuarios
+//   Interfaz que permite realizar operaciones CRUD y buscar usuarios por email.
+
 package com.proyec.crud.repository;
 
 import com.proyec.crud.entity.User;
@@ -8,6 +11,6 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-//recommended derived method
+    // Método para buscar un usuario por su email
     Optional<User> findByEmail(String email);
 }
