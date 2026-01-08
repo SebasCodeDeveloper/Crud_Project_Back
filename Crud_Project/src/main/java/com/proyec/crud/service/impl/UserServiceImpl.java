@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService {
         UserRs rs = new UserRs();
         rs.setId(user.getId().toString());
         rs.setName(user.getName());
-        rs.setEmail(user.getEmail());
+            rs.setEmail(user.getEmail());
 
         return rs;
     }
